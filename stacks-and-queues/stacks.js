@@ -54,7 +54,7 @@
 // }
 // #endregion
 
-// #region 649. Dota2 Senate
+// #region 649. Dota2 Senate (needed help)
 var predictPartyVictory = function(senate) {
     let senates = senate.split('');
     const hm = new Map();
@@ -80,7 +80,37 @@ var predictPartyVictory = function(senate) {
         }
     }
 
-    return queue[0];
+    return queue[0] === 'R' ? "Radiant" : "Dire";
 };
 
-predictPartyVictory("RDD")
+// didn't think to use two queues; unfortunately needed help
+var predictPartyVictory = function(senate) {
+    let radiantQueue = [];
+    let direQueue = [];
+
+    for (let i = 0; i < senate.length; i++) {
+        if (senate[i] === 'R') {
+            radiantQueue.push(i);
+        } else {
+            direQueue.push(i);
+        }
+    }
+
+    const n = senate.length;
+    while (radiantQueue.length > 0 && direQueue.length > 0) {
+        const radiantSenator = radiantQueue.shift();
+        const direSenator = direQueue.shift();
+
+        if (radiantSenator < direSenator) {
+            radiantQueue.push(radiantSenator + n); 
+        } else {
+            direQueue.push(direSenator + n); 
+        }
+    }
+
+    // Determine the winner
+    return radiantQueue.length > 0 ? "Radiant" : "Dire";
+};
+// #endregion
+
+

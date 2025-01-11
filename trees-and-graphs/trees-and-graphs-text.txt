@@ -1,0 +1,18 @@
+Trees
+
+- the root node is the node at the very top
+- if a node has no children, then it is a leaf node
+- the root has a depth of 0, every child has a depth of parentDepth + 1
+
+- two types of traversal => dfs & bfs
+- depth-first-search
+    - preorder: operate before children
+    - inorder: operate during children
+    - postorder: operate after children
+- 
+
+Binary Trees
+
+- all nodes can have at most two children. Referred to as left and right
+- every node except the root has one parent
+- 
