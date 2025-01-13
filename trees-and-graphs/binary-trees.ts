@@ -22,7 +22,7 @@ var maxDepth = function(root: TreeNode) {
  };
  // #endregion
 
- // #region 112.Path Sum
+// #region 112.Path Sum
  var hasPathSum = function(root: TreeNode, targetSum: number) {
     let currSum = 0;
     const dfs = (root: TreeNode | null, currSum: number): boolean => {
@@ -46,6 +46,29 @@ var maxDepth = function(root: TreeNode) {
 };
 // #endregion
 
+// #region 1448. Count good nodes in a binary tree
+var goodNodes = function(root: TreeNode) {
+    let count = 0;
+
+    let dfs = (root: TreeNode | null, max: number) => {
+        if (!root) {
+            return;
+        }
+
+        max = Math.max(max, root.val);
+        if (root.val >= max) {
+            count+=1;
+        }
+
+        dfs(root.left,max)
+        dfs(root.right, max);
+    }
+
+    dfs(root,-Infinity);
+
+    return count;
+};
+// #endregion
 let root = new TreeNode(3);
 root.left = new TreeNode(9);
 root.right = new TreeNode(20);
