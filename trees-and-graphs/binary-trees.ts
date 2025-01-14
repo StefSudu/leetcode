@@ -69,6 +69,31 @@ var goodNodes = function(root: TreeNode) {
     return count;
 };
 // #endregion
+
+// #region 1026. Maximum Difference Between Node and Ancestor
+var maxAncestorDiff = function(root: TreeNode) {
+    if (!root) {
+        return 0;
+    }  
+
+    let dfs = (root:TreeNode | null, min: number, max: number): number => {
+        if (!root) {
+            return max - min;
+        }
+
+        max = Math.max(max, root.val);
+        min = Math.min(min, root.val);
+
+        let left = dfs(root.left, min, max);
+        let right = dfs(root.right, min, max);
+
+        return Math.max(left, right); 
+    }
+
+    return dfs(root, root.val, root.val);
+};
+// #endregion
+
 let root = new TreeNode(3);
 root.left = new TreeNode(9);
 root.right = new TreeNode(20);
