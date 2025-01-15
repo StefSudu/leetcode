@@ -94,6 +94,33 @@ var maxAncestorDiff = function(root: TreeNode) {
 };
 // #endregion
 
+// #region 543. Diamtere of a binary tree
+var diameterOfBinaryTree = function(root: TreeNode) {
+    if (!root) {
+        return 0;
+    }
+
+    let maxD = 0;
+
+    let dfs = (root:TreeNode | null): number => {
+        if (!root) {
+            return 0;
+        }
+
+        let left = dfs(root.left);
+        let right = dfs(root.right);
+
+        maxD = Math.max(maxD, left+right);
+
+        return Math.max(left, right) + 1;
+    }
+    
+    dfs(root);
+    return maxD;
+
+};
+// #endregion
+
 let root = new TreeNode(3);
 root.left = new TreeNode(9);
 root.right = new TreeNode(20);
