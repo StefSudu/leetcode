@@ -9,7 +9,17 @@ Trees
     - preorder: operate before children
     - inorder: operate during children
     - postorder: operate after children
-- 
+
+- breadth-first search
+    - use bfs when we need to handle the node at the current level
+    - 
+
+- dfs vs bfs
+    - dfs will search left most side
+    - bfs will search the level
+    - dsf uses space linear to the height of the tree
+    - bfs uses space linear to the width of the tree
+    
 
 Binary Trees
 
