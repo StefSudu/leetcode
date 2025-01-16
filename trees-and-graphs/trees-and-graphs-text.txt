@@ -1,4 +1,4 @@
-Trees
+General
 
 - the root node is the node at the very top
 - if a node has no children, then it is a leaf node
@@ -19,7 +19,7 @@ Trees
     - bfs will search the level
     - dsf uses space linear to the height of the tree
     - bfs uses space linear to the width of the tree
-    
+
 
 Binary Trees
 
