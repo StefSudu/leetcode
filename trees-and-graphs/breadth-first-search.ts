@@ -73,3 +73,34 @@ var largestValues = function(root: any) {
     return ret;
 };
 // #endregion
+
+// #region 1302. Deepest leaves sum
+var deepestLeavesSum = function(root: TreeNode) {
+    let queue = [root];
+    let sum = 0;
+    
+    while (queue.length) {
+        let queueLength = queue.length;
+        let q = []
+        sum = 0
+        
+        for (let i=0;i<queue.length;i++){
+            let currNode = queue[i];
+            sum += currNode.val;
+            
+            if (currNode.left){
+                q.push(currNode.left);   
+            } 
+            
+            if (currNode.right){
+                q.push(currNode.right);
+            } 
+
+        }
+        
+        queue = q;
+    }
+    
+    return sum;
+};
+// #endregion
