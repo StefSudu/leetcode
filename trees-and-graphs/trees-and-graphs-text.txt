@@ -21,8 +21,11 @@ General
     - bfs uses space linear to the width of the tree
 
 
-Binary Trees
+Binary Search Trees (BST)
 
 - all nodes can have at most two children. Referred to as left and right
 - every node except the root has one parent
-- 
+
+- inorder dfs traversal means that we will visit nodes in ascending order and 
+use recursion to implement this
+
