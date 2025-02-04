@@ -104,3 +104,39 @@ var deepestLeavesSum = function(root: TreeNode) {
     return sum;
 };
 // #endregion
+
+// #region 103. Binary Tree Zigzag Level Order Traversal
+var zigzagLevelOrder = function(root: TreeNode) {
+    if (!root) {
+        return [];
+    }
+    let queue = [root];
+    let lvl = 0;
+    let res = [];
+    
+    while (queue.length) {
+        let q = [];
+        let r = [];
+
+        for (let i = 0; i < queue.length; i++) {
+            let currNode = queue[i];
+            r.push(currNode.val);
+
+            if (currNode.left) q.push(currNode.left);
+            if (currNode.right) q.push(currNode.right);
+        }
+
+        if (lvl % 2 !== 0) {
+            r.reverse(); 
+        }
+
+        res.push(r);
+        queue = q;
+        lvl += 1;
+
+    }
+    return res;
+};
+// #endregion
+
+

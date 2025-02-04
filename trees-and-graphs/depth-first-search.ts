@@ -121,6 +121,31 @@ var diameterOfBinaryTree = function(root: TreeNode) {
 };
 // #endregion
 
+// #region 938. Range sum of BST
+var rangeSumBST = function(root: TreeNode, low: number, high: number) {
+    let sum = 0;
+
+    function dfs(root: TreeNode|null, low: number, high: number) {
+        if (!root) {
+            return;
+        }
+
+        if (root.val >= low && root.val <= high) {
+            sum += root.val;
+        };
+
+        dfs(root.left, low, high);
+        dfs(root.right, low, high);
+    }
+
+    dfs(root, low, high);
+
+    return sum;
+};
+// #endregion
+
+
+
 let root = new TreeNode(3);
 root.left = new TreeNode(9);
 root.right = new TreeNode(20);
