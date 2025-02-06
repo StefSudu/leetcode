@@ -167,6 +167,30 @@ var getMinimumDifference = function(root: TreeNode) {
 };
 // #endregion
 
+// #region 98 . Validate Binary Search Tree
+var isValidBST = function(root: TreeNode|null) {
+    let dfs = (root: TreeNode|null) => {
+        if (!root) {
+            return;
+        }
+
+        dfs(root.left);
+        arr.push(root.val);
+        dfs(root.right);
+    }
+
+    let arr: number[] = [];
+    dfs(root);
+
+    for (let i=1;i<arr.length;i++) {
+        if (arr[i] <= arr[i-1]) {
+            return false;
+        }
+    }
+
+    return true;
+};
+// #endregion
 
 let root = new TreeNode(3);
 root.left = new TreeNode(9);
