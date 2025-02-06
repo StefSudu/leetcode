@@ -144,6 +144,28 @@ var rangeSumBST = function(root: TreeNode, low: number, high: number) {
 };
 // #endregion
 
+// #region 530. Minimum Absolute Difference in BST
+var getMinimumDifference = function(root: TreeNode) {
+    let dfs = (root: TreeNode|null) => {
+        if (!root) {
+            return;
+        }
+
+        dfs(root.left);
+        arr.push(root.val);
+        dfs(root.right);
+    }
+
+    let arr: number[] = [];
+    dfs(root);
+    let diff = Infinity;
+    for (let i=1;i<arr.length;i++) {
+        diff = Math.min(diff, arr[i]-arr[i-1]);
+    }
+
+    return diff;
+};
+// #endregion
 
 
 let root = new TreeNode(3);
