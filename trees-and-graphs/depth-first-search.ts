@@ -192,6 +192,31 @@ var isValidBST = function(root: TreeNode|null) {
 };
 // #endregion
 
+// #region 701. Insert into a Binary Search Tree
+var insertIntoBST = function(root:TreeNode|null, val:number) {
+    if (!root) {
+        return new TreeNode(val);
+    }
+    
+    let dfs = (root:TreeNode|null) => {
+        if (!root) {
+            return new TreeNode(val);
+        }
+        
+        if (val < root.val) {
+            root.left = dfs(root.left);
+        }
+        if (val > root.val) {
+            root.right = dfs(root.right);
+        }
+        
+        return root;
+    }
+    dfs(root);
+    return root;
+};
+// #endregion
+
 let root = new TreeNode(3);
 root.left = new TreeNode(9);
 root.right = new TreeNode(20);
