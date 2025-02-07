@@ -217,6 +217,35 @@ var insertIntoBST = function(root:TreeNode|null, val:number) {
 };
 // #endregion
 
+// #region 270. Closest Binary Search Tree Value
+var closestValue = function(root: TreeNode|null, target:number) {
+    let minDiff = Infinity;
+    let curr = Infinity;
+
+    let dfs = (root:TreeNode|null) => {
+        if (!root) {
+            return;
+        }
+        
+        let calc = Math.abs(root.val-target);
+
+        if (calc == minDiff) {
+            curr = Math.min(curr, root.val);
+        } else if (calc < minDiff) {
+            minDiff = Math.abs(root.val-target);
+            curr = root.val;
+        }
+        
+        dfs(root.left);
+        dfs(root.right);
+    }
+    
+    dfs(root);
+    return curr;
+};
+// #endregion
+
+
 let root = new TreeNode(3);
 root.left = new TreeNode(9);
 root.right = new TreeNode(20);
