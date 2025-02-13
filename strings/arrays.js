@@ -37,3 +37,36 @@ var canPlaceFlowers = function(flowerbed, n) {
     return n === 0;
 };
 // #endregion
+
+// #region 345. Reverse Vowels of a String
+var reverseVowels = function(s) {
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let hm = new Map();
+
+    for (let vowel of vowels) {
+        hm.set(vowel, true);
+    };
+
+    let arr = s.split('');
+
+    let start = 0;
+    let end = arr.length-1;
+
+    while (start < end) {
+        let startChar = arr[start];
+        let endChar = arr[end];
+
+        if (hm.has(startChar.toLowerCase()) && hm.has(endChar.toLowerCase())) {
+            [arr[start], arr[end]] = [arr[end], arr[start]];
+            start+=1;
+            end-=1;
+        } else if (!hm.has(startChar.toLowerCase())) { 
+            start += 1; 
+        } else {  
+            end -= 1;  
+        }
+    }
+
+    return arr.join('');
+};
+// #endregion
