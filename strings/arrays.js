@@ -86,3 +86,28 @@ var reverseWords = function(s) {
     return finalArr.join(' ');
 };
 // #endregion
+
+// #region 238. Product of Array Except Self
+var productExceptSelf = function(nums) {
+    let arr = [];
+
+    let postfix = new Array(nums.length).fill(1);
+
+    for (let i=nums.length-2;i>=0;i--) {
+        postfix[i] = nums[i + 1] * postfix[i + 1];
+    };
+
+    let prefix = 1;
+    for (let i=0;i<nums.length;i++) {
+        if (i === 0) {
+            arr.push(postfix[i]);
+        } else if (i === nums.length-1) {
+            arr.push(prefix);
+        } else {
+            arr.push(prefix*postfix[i]);
+        };
+        prefix *= nums[i];
+    }
+    return arr;
+};
+// #endregion
