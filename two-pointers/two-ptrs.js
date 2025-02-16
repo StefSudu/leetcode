@@ -20,3 +20,17 @@ var moveZeroes = function(nums) {
     return nums;
 };
 // #endregion
+
+// #region 392. Is Subsequence
+var isSubsequence = function(s, t) {
+    let ptr1 = 0;
+
+    for (let ptr2=0;ptr2<t.length;ptr2++) {
+        if (t[ptr2] == s[ptr1]) {
+            ptr1+=1;
+        }
+    }
+
+    return ptr1 == s.length
+};
+// #endregion
