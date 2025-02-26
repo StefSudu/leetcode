@@ -29,3 +29,27 @@ var maxVowels = function(s, k) {
     return maxVowels == Number.MIN_VALUE ? 0 : maxVowels;
 };
 // #endregion
+
+// #region 1004. Max Consecutive Ones III
+var longestOnes = function(nums, k) {
+    let left = 0;
+    let count = 0;
+    let max = -10;
+    for (let right=0; right < nums.length; right++) {
+        if (nums[right] == 0) {
+            count += 1;
+        }
+        
+        while (count > k) {
+            if (nums[left] == 0){
+                count -= 1;
+            }
+            left += 1;
+        }
+        
+        max = Math.max(right-left+1, max);
+    }
+    
+    return max;
+};
+// #endregion
